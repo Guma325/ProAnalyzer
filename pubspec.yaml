@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  email_validator: '^2.1.16'
   flutter:
     sdk: flutter
 
@@ -63,6 +64,7 @@ flutter:
   assets:
     - images/
     - images/summoners_icons/
+    - images/champions/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

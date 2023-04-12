@@ -1,14 +1,16 @@
-class Matches {
+class Summoner {
   String iconeInvocador;
   String nomeInvocador;
   String firstChampion;
   String secondChampion;
   String thirdChampion;
+  int winrate;
 
-  Matches(
+  Summoner(
       {required this.iconeInvocador,
       required this.nomeInvocador,
       required this.firstChampion,
       required this.secondChampion,
-      required this.thirdChampion});
+      required this.thirdChampion,
+      required this.winrate});
 }

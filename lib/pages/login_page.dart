@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:myapp/components/my_button.dart';
 import 'package:myapp/components/my_textfield.dart';
@@ -57,7 +55,7 @@ class _LoginPageState extends State<LoginPage> {
               size: 150,
               color: Colors.grey[700],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               "Bem vindo de volta Invocador!",
               style: TextStyle(
@@ -65,17 +63,23 @@ class _LoginPageState extends State<LoginPage> {
                   fontSize: 21,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 60),
+            const SizedBox(height: 60),
+
+            // Textfield email
             MyTextField(
                 controller: usernameController,
                 hintText: "Email",
                 obscureText: false),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+
+            // Textfield Senha
             MyTextField(
                 controller: passwordController,
                 hintText: "Senha",
                 obscureText: true),
-            SizedBox(height: 20),
+
+            const SizedBox(height: 20),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Row(
@@ -84,23 +88,25 @@ class _LoginPageState extends State<LoginPage> {
                   Text(
                     "Esqueceu a senha?",
                     style: TextStyle(
-                        color: Colors.grey,
-                        //fontSize: 21,
-                        fontWeight: FontWeight.bold),
+                        color: Colors.grey, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
-            SizedBox(height: 20),
+
+            const SizedBox(height: 20),
+
             MyButton(
               text: "Entrar",
               onTap: signUserIn,
             ),
-            SizedBox(height: 10),
+
+            const SizedBox(height: 10),
+
             MyButton(
               text: "Cadastrar",
-              onTap: () => Navigator.push(
-                  context, MaterialPageRoute(builder: (_) => SingUpPage())),
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const SingUpPage())),
             )
           ],
         ),

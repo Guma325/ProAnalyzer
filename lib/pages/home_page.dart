@@ -1,9 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
-import 'package:myapp/components/bottom_navbar.dart';
-import 'package:myapp/components/my_button.dart';
-import 'package:myapp/components/my_textfield.dart';
+import 'package:myapp/components/my_listtile.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
 
 class HomePage extends StatefulWidget {
@@ -64,11 +60,7 @@ class _MyStatefulWidgetState extends State<HomePage>
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int match) {
-                    return ListTile(
-                      leading: Image.asset(tabela[match].iconeInvocador),
-                      title: Text(tabela[match].nomeInvocador),
-                      trailing: Image.asset(tabela[match].firstChampion),
-                    );
+                    return MyListTile(match: match);
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
@@ -76,36 +68,7 @@ class _MyStatefulWidgetState extends State<HomePage>
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int match) {
-                    return ListTile(
-                      leading: Image.asset(tabela[match].iconeInvocador),
-                      title: Text(
-                        tabela[match].nomeInvocador,
-                        textScaleFactor: 1.25,
-                      ),
-                      subtitle: Row(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 50,
-                            width: 50,
-                            child: Image.asset(tabela[match].firstChampion),
-                          ),
-                          SizedBox(
-                            height: 50,
-                            width: 50,
-                            child: Image.asset(tabela[match].secondChampion),
-                          ),
-                          SizedBox(
-                            height: 50,
-                            width: 50,
-                            child: Image.asset(tabela[match].thirdChampion),
-                          )
-                        ],
-                      ),
-                      trailing: Text(
-                        "${tabela[match].winrate.toString()}%",
-                        textScaleFactor: 1.25,
-                      ),
-                    );
+                    return MyListTile(match: match);
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
@@ -113,11 +76,7 @@ class _MyStatefulWidgetState extends State<HomePage>
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int match) {
-                    return ListTile(
-                      leading: Image.asset(tabela[match].iconeInvocador),
-                      title: Text(tabela[match].nomeInvocador),
-                      trailing: Image.asset(tabela[match].firstChampion),
-                    );
+                    return MyListTile(match: match);
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
@@ -125,11 +84,7 @@ class _MyStatefulWidgetState extends State<HomePage>
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int match) {
-                    return ListTile(
-                      leading: Image.asset(tabela[match].iconeInvocador),
-                      title: Text(tabela[match].nomeInvocador),
-                      trailing: Image.asset(tabela[match].firstChampion),
-                    );
+                    return MyListTile(match: match);
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
@@ -137,11 +92,7 @@ class _MyStatefulWidgetState extends State<HomePage>
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int match) {
-                    return ListTile(
-                      leading: Image.asset(tabela[match].iconeInvocador),
-                      title: Text(tabela[match].nomeInvocador),
-                      trailing: Image.asset(tabela[match].firstChampion),
-                    );
+                    return MyListTile(match: match);
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),

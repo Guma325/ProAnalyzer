@@ -35,6 +35,10 @@ class _MyStatefulWidgetState extends State<HomePage>
         automaticallyImplyLeading: false,
         bottom: TabBar(
           controller: _tabController,
+          indicator: BoxDecoration(
+              borderRadius: BorderRadius.circular(40),
+              border: Border.all(color: Colors.black)),
+          splashBorderRadius: BorderRadius.circular(80),
           tabs: const <Widget>[
             Tab(
               icon: ImageIcon(AssetImage('images/top.png')),

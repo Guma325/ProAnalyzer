@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/components/bottom_navbar.dart';
 import 'package:myapp/components/my_button.dart';
 import 'package:myapp/components/my_textfield.dart';
-import 'package:myapp/repositories/matches_repository.dart';
+import 'package:myapp/repositories/summoner_repository.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -25,7 +25,7 @@ class _MyStatefulWidgetState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    final tabela = MatchesRepository.tabela;
+    final tabela = SummonerRepository.tabela;
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -41,19 +41,19 @@ class _MyStatefulWidgetState extends State<HomePage>
           splashBorderRadius: BorderRadius.circular(80),
           tabs: const <Widget>[
             Tab(
-              icon: ImageIcon(AssetImage('images/top.png')),
+              icon: ImageIcon(AssetImage('images/summoners_icons/top.png')),
             ),
             Tab(
-              icon: ImageIcon(AssetImage('images/jg.png')),
+              icon: ImageIcon(AssetImage('images/summoners_icons/jg.png')),
             ),
             Tab(
-              icon: ImageIcon(AssetImage('images/mid.png')),
+              icon: ImageIcon(AssetImage('images/summoners_icons/mid.png')),
             ),
             Tab(
-              icon: ImageIcon(AssetImage('images/adc.png')),
+              icon: ImageIcon(AssetImage('images/summoners_icons/adc.png')),
             ),
             Tab(
-              icon: ImageIcon(AssetImage('images/sup.png')),
+              icon: ImageIcon(AssetImage('images/summoners_icons/sup.png')),
             ),
           ],
         ),
@@ -78,8 +78,33 @@ class _MyStatefulWidgetState extends State<HomePage>
                   itemBuilder: (BuildContext context, int match) {
                     return ListTile(
                       leading: Image.asset(tabela[match].iconeInvocador),
-                      title: Text(tabela[match].nomeInvocador),
-                      trailing: Image.asset(tabela[match].firstChampion),
+                      title: Text(
+                        tabela[match].nomeInvocador,
+                        textScaleFactor: 1.25,
+                      ),
+                      subtitle: Row(
+                        children: <Widget>[
+                          SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: Image.asset(tabela[match].firstChampion),
+                          ),
+                          SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: Image.asset(tabela[match].secondChampion),
+                          ),
+                          SizedBox(
+                            height: 50,
+                            width: 50,
+                            child: Image.asset(tabela[match].thirdChampion),
+                          )
+                        ],
+                      ),
+                      trailing: Text(
+                        "${tabela[match].winrate.toString()}%",
+                        textScaleFactor: 1.25,
+                      ),
                     );
                   },
                   padding: const EdgeInsets.all(25),

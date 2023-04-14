@@ -12,19 +12,22 @@ class MyBottomNavbar extends StatelessWidget {
       child: GNav(
         onTabChange: (value) => onTabChange!(value),
         mainAxisAlignment: MainAxisAlignment.center,
-        tabActiveBorder: Border.all(color: Colors.black),
+        tabActiveBorder: Border.all(color: Colors.grey.shade50),
         gap: 8,
         tabs: [
           const GButton(
             icon: Icons.list_alt_outlined,
             text: "Home",
+            //activeBorder: Border.fromBorderSide(BorderSide.none),
           ),
           const GButton(
             icon: Icons.account_circle_rounded,
             text: "Profile",
+            //activeBorder: Border.fromBorderSide(BorderSide.none),
           ),
           GButton(
             icon: Icons.logout,
+            //activeBorder: const Border.fromBorderSide(BorderSide.none),
             onPressed: () {
               Navigator.pop(context);
             },

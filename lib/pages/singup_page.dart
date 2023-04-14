@@ -14,9 +14,10 @@ class SingUpPage extends StatefulWidget {
 
 class _SingUpPageState extends State<SingUpPage> {
   // Controlador de edção dos textos:
-  final usernameController = TextEditingController();
-
+  final emailController = TextEditingController();
+  final summonerController = TextEditingController();
   final passwordController = TextEditingController();
+  final passwordConfController = TextEditingController();
 
   // Metodo Entrar
   void signUserIn(context) {
@@ -30,6 +31,11 @@ class _SingUpPageState extends State<SingUpPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const Image(
+              image: AssetImage("images/Lolico.png"),
+              width: 100,
+            ),
+            SizedBox(height: 20),
             Text(
               "Cadastro",
               style: TextStyle(
@@ -37,20 +43,25 @@ class _SingUpPageState extends State<SingUpPage> {
                   fontSize: 21,
                   fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 100),
+            SizedBox(height: 20),
             MyTextField(
-                controller: usernameController,
+                controller: emailController,
                 hintText: "Email",
                 obscureText: false),
             SizedBox(height: 20),
             MyTextField(
-                controller: usernameController,
+                controller: summonerController,
                 hintText: "Nome do Invocador",
                 obscureText: false),
             SizedBox(height: 20),
             MyTextField(
                 controller: passwordController,
                 hintText: "Senha",
+                obscureText: true),
+            SizedBox(height: 20),
+            MyTextField(
+                controller: passwordConfController,
+                hintText: "Confirmação de Senha",
                 obscureText: true),
             SizedBox(height: 60),
             MyButton(

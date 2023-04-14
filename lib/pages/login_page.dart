@@ -50,10 +50,9 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.account_circle_sharp,
-              size: 150,
-              color: Colors.grey[700],
+            const CircleAvatar(
+              maxRadius: 50,
+              backgroundImage: AssetImage("images/Electrocute.png"),
             ),
             const SizedBox(height: 20),
             Text(

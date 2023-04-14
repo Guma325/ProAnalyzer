@@ -30,5 +30,33 @@ class SummonerRepository {
         secondChampion: "images/champions/Singed_0.jpg",
         thirdChampion: "images/champions/Sion_0.jpg",
         winrate: 70),
+    Summoner(
+        iconeInvocador: "images/summoners_icons/top.png",
+        nomeInvocador: "Mylon",
+        firstChampion: "images/champions/Gnar_0.jpg",
+        secondChampion: "images/champions/Singed_0.jpg",
+        thirdChampion: "images/champions/Sion_0.jpg",
+        winrate: 70),
+    Summoner(
+        iconeInvocador: "images/summoners_icons/top.png",
+        nomeInvocador: "Mylon",
+        firstChampion: "images/champions/Gnar_0.jpg",
+        secondChampion: "images/champions/Singed_0.jpg",
+        thirdChampion: "images/champions/Sion_0.jpg",
+        winrate: 70),
+    Summoner(
+        iconeInvocador: "images/summoners_icons/top.png",
+        nomeInvocador: "Mylon",
+        firstChampion: "images/champions/Gnar_0.jpg",
+        secondChampion: "images/champions/Singed_0.jpg",
+        thirdChampion: "images/champions/Sion_0.jpg",
+        winrate: 70),
+    Summoner(
+        iconeInvocador: "images/summoners_icons/top.png",
+        nomeInvocador: "Mylon",
+        firstChampion: "images/champions/Gnar_0.jpg",
+        secondChampion: "images/champions/Singed_0.jpg",
+        thirdChampion: "images/champions/Sion_0.jpg",
+        winrate: 70),
   ];
 }

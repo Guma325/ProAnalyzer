@@ -12,7 +12,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final user = Summoner(
-        iconeInvocador: "images/summoners_icons/top.png",
+        iconeInvocador: "images/summoners_icons/666.png",
         nomeInvocador: "Kami",
         firstChampion: "images/champions/Caitlyn_0.jpg",
         secondChampion: "images/champions/Mordekaiser_0.jpg",

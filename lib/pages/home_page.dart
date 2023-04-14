@@ -29,6 +29,7 @@ class _MyStatefulWidgetState extends State<HomePage>
         backgroundColor: Colors.transparent,
         toolbarHeight: 5,
         automaticallyImplyLeading: false,
+        elevation: 0,
         bottom: TabBar(
           controller: _tabController,
           indicator: BoxDecoration(

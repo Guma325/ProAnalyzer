@@ -16,6 +16,7 @@ class _MyListTileState extends State<MyListTile> {
   Widget build(BuildContext context) {
     final tabela = SummonerRepository.tabela;
     return ListTile(
+      hoverColor: Colors.grey[500],
       leading: Image.asset(tabela[widget.match].iconeInvocador),
       title: Text(
         tabela[widget.match].nomeInvocador,
@@ -23,14 +24,23 @@ class _MyListTileState extends State<MyListTile> {
       ),
       subtitle: Row(
         children: <Widget>[
-          CircleAvatar(
-            backgroundImage: AssetImage(tabela[widget.match].firstChampion),
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: CircleAvatar(
+              backgroundImage: AssetImage(tabela[widget.match].firstChampion),
+            ),
           ),
-          CircleAvatar(
-            backgroundImage: AssetImage(tabela[widget.match].secondChampion),
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: CircleAvatar(
+              backgroundImage: AssetImage(tabela[widget.match].secondChampion),
+            ),
           ),
-          CircleAvatar(
-            backgroundImage: AssetImage(tabela[widget.match].thirdChampion),
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: CircleAvatar(
+              backgroundImage: AssetImage(tabela[widget.match].thirdChampion),
+            ),
           ),
         ],
       ),

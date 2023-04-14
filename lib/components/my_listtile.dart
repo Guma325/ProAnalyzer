@@ -17,27 +17,37 @@ class _MyListTileState extends State<MyListTile> {
     final tabela = SummonerRepository.tabela;
     return ListTile(
       hoverColor: Colors.grey[500],
-      leading: Image.asset(tabela[widget.match].iconeInvocador),
+      leading: ClipRRect(
+        borderRadius: BorderRadius.circular(10.0),
+        child: Image.asset(
+          tabela[widget.match].iconeInvocador
+          )
+      ),
       title: Text(
         tabela[widget.match].nomeInvocador,
         textScaleFactor: 1.25,
+        style: TextStyle(
+                  color: Colors.grey[800],
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold
+                  ),
       ),
       subtitle: Row(
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(right: 5),
+            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage: AssetImage(tabela[widget.match].firstChampion),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 5),
+            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage: AssetImage(tabela[widget.match].secondChampion),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(right: 5),
+            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage: AssetImage(tabela[widget.match].thirdChampion),
             ),
@@ -47,6 +57,11 @@ class _MyListTileState extends State<MyListTile> {
       trailing: Text(
         "WR:${tabela[widget.match].winrate.toString()}%",
         textScaleFactor: 1.25,
+        style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold
+                  ),
       ),
     );
   }

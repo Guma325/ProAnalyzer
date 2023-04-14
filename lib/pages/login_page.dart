@@ -50,9 +50,9 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const CircleAvatar(
-              maxRadius: 50,
-              backgroundImage: AssetImage("images/Electrocute.png"),
+            const Image(
+              image: AssetImage("images/Lolico.png"),
+              width: 100,
             ),
             const SizedBox(height: 20),
             Text(
@@ -60,7 +60,8 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 21,
-                  fontWeight: FontWeight.bold),
+                  fontWeight: FontWeight.bold
+                  ),
             ),
             const SizedBox(height: 60),
 
@@ -93,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: 60),
 
             MyButton(
               text: "Entrar",

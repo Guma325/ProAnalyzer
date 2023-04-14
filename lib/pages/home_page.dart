@@ -32,10 +32,11 @@ class _MyStatefulWidgetState extends State<HomePage>
         elevation: 0,
         bottom: TabBar(
           controller: _tabController,
-          indicator: BoxDecoration(
-              borderRadius: BorderRadius.circular(40),
-              border: Border.all(color: Colors.black)),
-          splashBorderRadius: BorderRadius.circular(80),
+          unselectedLabelColor: Colors.grey[400],
+          indicator: UnderlineTabIndicator(
+            borderSide: BorderSide(color: Colors.grey.shade600, width: 3.5),
+            insets: const EdgeInsets.fromLTRB(50.0, 40.0, 50.0, 5.0),
+          ),
           tabs: const <Widget>[
             Tab(
               icon: ImageIcon(AssetImage('images/summoners_icons/top.png')),

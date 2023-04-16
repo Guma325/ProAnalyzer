@@ -1,4 +1,4 @@
-![Logo](https://github.com/Guma325/myapp/images/Lolico.png)
+![Logo](https://https://github.com/Guma325/myapp/tree/julhao/images/Lolico.png)
 
 ![Flutter](https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white)
 ![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)

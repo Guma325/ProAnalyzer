@@ -18,19 +18,13 @@ class _MyListTileState extends State<MyListTile> {
     return ListTile(
       hoverColor: Colors.grey[500],
       leading: ClipRRect(
-        borderRadius: BorderRadius.circular(10.0),
-        child: Image.asset(
-          tabela[widget.match].iconeInvocador
-          )
-      ),
+          borderRadius: BorderRadius.circular(10.0),
+          child: Image.asset(tabela[widget.match].iconeInvocador)),
       title: Text(
         tabela[widget.match].nomeInvocador,
         textScaleFactor: 1.25,
         style: TextStyle(
-                  color: Colors.grey[800],
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold
-                  ),
+            color: Colors.grey[800], fontSize: 15, fontWeight: FontWeight.bold),
       ),
       subtitle: Row(
         children: <Widget>[
@@ -58,10 +52,7 @@ class _MyListTileState extends State<MyListTile> {
         "WR:${tabela[widget.match].winrate.toString()}%",
         textScaleFactor: 1.25,
         style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold
-                  ),
+            color: Colors.grey[600], fontSize: 10, fontWeight: FontWeight.bold),
       ),
     );
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/summoner.dart';
+import 'package:myapp/components/my_matchlisttile.dart';
+import 'package:myapp/repositories/match_repository.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -11,6 +13,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
+    final tabela = MatchRepository.tabela;
     final user = Summoner(
         iconeInvocador: "images/summoners_icons/666.png",
         nomeInvocador: "Kami",
@@ -72,6 +75,16 @@ class _ProfilePageState extends State<ProfilePage> {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
+            SizedBox(
+              height: 300,
+              child: ListView.separated(
+                  itemBuilder: (BuildContext context, int match) {
+                    return MyMatchListTile(match: match);
+                  },
+                  //padding: const EdgeInsets.all(25),
+                  separatorBuilder: (_, __) => const Divider(),
+                  itemCount: tabela.length),
+            ),
           ],
         ),
       ),

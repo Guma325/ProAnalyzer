@@ -23,6 +23,7 @@ O aplicativo possui cinco telas interativas de navegação, sendo elas:
 ## Melhorias
 
 O projeto ainda está em desenvolvimento e planejamos arrumar diversas coisas. Algumas das melhorias que planejamos aplicar são:
+- Adicionar a tela de recuperação de senha
 - Adicionar a tela de pesquisa de jogador
 - Favoritar jogadores
 - Uso da API da Riot Games

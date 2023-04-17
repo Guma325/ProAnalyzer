@@ -26,6 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            const SizedBox(height: 70),
             CircleAvatar(
               maxRadius: 50,
               backgroundImage: AssetImage(user.iconeInvocador),
@@ -75,9 +76,9 @@ class _ProfilePageState extends State<ProfilePage> {
                   fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              height: 300,
+            Expanded(
               child: ListView.separated(
+                  padding: EdgeInsets.zero,
                   itemBuilder: (BuildContext context, int match) {
                     return MyMatchListTile(match: match);
                   },

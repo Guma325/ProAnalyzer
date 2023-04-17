@@ -46,6 +46,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -60,8 +61,7 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 21,
-                  fontWeight: FontWeight.bold
-                  ),
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 60),
 

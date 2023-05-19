@@ -24,11 +24,11 @@ class _LoginPageState extends State<LoginPage> {
     String password = passwordController.text;
 
     if (password.length < 6) {
-      errorDialog("Senha deve ser maior do que 6 digitos");
+      errorDialog("Senha deve ser maior do que 6 digitos.");
     } else if (!EmailValidator.validate(username)) {
-      errorDialog("Email fora de formato");
+      errorDialog("Email fora de formato.");
     } else {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => NavBarPage()));
+      Navigator.push(context, MaterialPageRoute(builder: (_) => const NavBarPage()));
     }
   }
 

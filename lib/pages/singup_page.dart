@@ -5,6 +5,8 @@ import 'package:myapp/components/my_button.dart';
 import 'package:myapp/components/my_textfield.dart';
 import 'package:myapp/pages/navbar_page.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:myapp/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class SingUpPage extends StatefulWidget {
   const SingUpPage({super.key});
@@ -20,6 +22,32 @@ class _SingUpPageState extends State<SingUpPage> {
   final passwordController = TextEditingController();
   final passwordConfController = TextEditingController();
 
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  registrar(email, pass) async {
+    setState(() {
+      //loading = true;
+    });
+
+    try {
+      await context.read<AuthService>().registrar(email.text, pass.text);
+
+      setState(() {
+        //loading = false;
+      });
+    } on AuthException catch (e) {
+      setState(() {
+        //loading = false;
+      });
+
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
+
   // Metodo Entrar
   void signUserIn() {
     String email = emailController.text;
@@ -31,15 +59,24 @@ class _SingUpPageState extends State<SingUpPage> {
 
     if (password.length < 6) {
       errorDialog("Senha deve ser maior do que 6 digitos");
-    } else if (!EmailValidator.validate(email)) {
-      errorDialog("Email fora de formato");
-    } else if (summonerName.length < 4) {
-      errorDialog("Nome deve conter mais de 4 caracteres");
-    } else if (password != passwordConf) {
-      errorDialog("As senhas devem ser iguais");
-    } else {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => NavBarPage()));
+      return;
     }
+    if (!EmailValidator.validate(email)) {
+      errorDialog("Email fora de formato");
+      return;
+    }
+    if (summonerName.length < 4) {
+      errorDialog("Nome deve conter mais de 4 caracteres");
+      return;
+    }
+    if (password != passwordConf) {
+      errorDialog("As senhas devem ser iguais");
+      return;
+    }
+
+    registrar(email, password);
+
+    Navigator.of(context).pop();
   }
 
   void errorDialog(String text) {

@@ -4,6 +4,7 @@ import 'package:myapp/components/my_textfield.dart';
 import 'package:myapp/pages/navbar_page.dart';
 import 'package:myapp/pages/singup_page.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:myapp/services/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -23,13 +24,18 @@ class _LoginPageState extends State<LoginPage> {
     String username = usernameController.text;
     String password = passwordController.text;
 
+    if (!EmailValidator.validate(username)) {
+      errorDialog("Email fora de formato.");
+      return;
+    }
+
     if (password.length < 6) {
       errorDialog("Senha deve ser maior do que 6 digitos.");
-    } else if (!EmailValidator.validate(username)) {
-      errorDialog("Email fora de formato.");
-    } else {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => const NavBarPage()));
+      return;
     }
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (_) => const NavBarPage()));
   }
 
   void errorDialog(String text) {

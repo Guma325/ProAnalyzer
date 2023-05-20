@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "132099671146",
+    "project_id": "proanalyzer-39b94",
+    "storage_bucket": "proanalyzer-39b94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:132099671146:android:b8551269f5cb0baf77f613",
+        "android_client_info": {
+          "package_name": "com.example.appProAnalyzer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "132099671146-f0ljujsdr2649b17tnsieb367nkdf4hb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCnThxJEGmGSAC3Q4hZjNiM7v7ujftzHwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "132099671146-f0ljujsdr2649b17tnsieb367nkdf4hb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,6 +5,7 @@ import 'package:myapp/pages/navbar_page.dart';
 import 'package:myapp/pages/singup_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:myapp/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -20,7 +21,27 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   // Metodo Entrar
-  void signUserIn() {
+  login(username, password) async {
+    try {
+      await context.read<AuthService>().login(username, password);
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
+  }
+
+  void errorDialog(String text) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text(text),
+        );
+      },
+    );
+  }
+
+  void logUserIn() async {
     String username = usernameController.text;
     String password = passwordController.text;
 
@@ -33,20 +54,14 @@ class _LoginPageState extends State<LoginPage> {
       errorDialog("Senha deve ser maior do que 6 digitos.");
       return;
     }
-
-    Navigator.push(
-        context, MaterialPageRoute(builder: (_) => const NavBarPage()));
-  }
-
-  void errorDialog(String text) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(text),
-        );
-      },
-    );
+    try {
+      await context.read<AuthService>().login(username, password);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => const NavBarPage()));
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 
   @override
@@ -104,7 +119,7 @@ class _LoginPageState extends State<LoginPage> {
 
             MyButton(
               text: "Entrar",
-              onTap: signUserIn,
+              onTap: logUserIn,
             ),
 
             const SizedBox(height: 10),

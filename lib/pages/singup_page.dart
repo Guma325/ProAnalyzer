@@ -28,21 +28,9 @@ class _SingUpPageState extends State<SingUpPage> {
   }
 
   registrar(email, pass) async {
-    setState(() {
-      //loading = true;
-    });
-
     try {
-      await context.read<AuthService>().registrar(email.text, pass.text);
-
-      setState(() {
-        //loading = false;
-      });
+      await context.read<AuthService>().registrar(email, pass);
     } on AuthException catch (e) {
-      setState(() {
-        //loading = false;
-      });
-
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.message)));
     }

@@ -19,6 +19,7 @@ class _PlayerDetailPageState extends State<PlayerDetailPage> {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey.shade300,
         title: Text(widget.summoner.nomeInvocador),
       ),
       body: Center(

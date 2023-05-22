@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart';
+
+import '../services/auth_service.dart';
 
 class MyBottomNavbar extends StatelessWidget {
   void Function(int)? onTabChange;
@@ -29,6 +32,7 @@ class MyBottomNavbar extends StatelessWidget {
             icon: Icons.logout,
             //activeBorder: const Border.fromBorderSide(BorderSide.none),
             onPressed: () {
+              context.read<AuthService>().logout();
               Navigator.pop(context);
             },
           )

@@ -4,6 +4,8 @@ import 'package:myapp/components/my_textfield.dart';
 import 'package:myapp/pages/navbar_page.dart';
 import 'package:myapp/pages/singup_page.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:myapp/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,16 +21,12 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   // Metodo Entrar
-  void signUserIn() {
-    String username = usernameController.text;
-    String password = passwordController.text;
-
-    if (password.length < 6) {
-      errorDialog("Senha deve ser maior do que 6 digitos.");
-    } else if (!EmailValidator.validate(username)) {
-      errorDialog("Email fora de formato.");
-    } else {
-      Navigator.push(context, MaterialPageRoute(builder: (_) => const NavBarPage()));
+  login(username, password) async {
+    try {
+      await context.read<AuthService>().login(username, password);
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
     }
   }
 
@@ -50,6 +48,29 @@ class _LoginPageState extends State<LoginPage> {
         );
       },
     );
+  }
+
+  void logUserIn() async {
+    String username = usernameController.text;
+    String password = passwordController.text;
+
+    if (!EmailValidator.validate(username)) {
+      errorDialog("Email fora de formato.");
+      return;
+    }
+
+    if (password.length < 6) {
+      errorDialog("Senha deve ser maior do que 6 digitos.");
+      return;
+    }
+    try {
+      await context.read<AuthService>().login(username, password);
+      Navigator.push(
+          context, MaterialPageRoute(builder: (_) => const NavBarPage()));
+    } on AuthException catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(e.message)));
+    }
   }
 
   @override
@@ -107,7 +128,7 @@ class _LoginPageState extends State<LoginPage> {
 
             MyButton(
               text: "Entrar",
-              onTap: signUserIn,
+              onTap: logUserIn,
             ),
 
             const SizedBox(height: 10),

@@ -30,6 +30,9 @@ environment:
 dependencies:
   email_validator: '^2.1.16'
   provider: '^6.0.5'
+  firebase_core: ^2.1.1
+  firebase_database: ^10.0.4
+  firebase_auth: ^4.1.1
   flutter:
     sdk: flutter
 
@@ -68,6 +71,9 @@ flutter:
     - images/Lolico.png
     - images/summoners_icons/
     - images/champions/
+    - images/summoner_spells/
+    - images/runes/
+    - images/profile_icons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

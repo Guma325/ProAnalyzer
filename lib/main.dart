@@ -1,8 +1,26 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/login_page.dart';
+import 'package:myapp/services/auth_service.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MeuApp());
+import 'firebase_options.dart';
+
+void main() async {
+  //runApp(const MeuApp());
+
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => AuthService()),
+    ],
+    child: const MeuApp(),
+  ));
 }
 
 class MeuApp extends StatelessWidget {

@@ -55,12 +55,14 @@ class _LoginPageState extends State<LoginPage> {
     String password = passwordController.text;
 
     if (!EmailValidator.validate(username)) {
-      errorDialog("Email fora de formato.");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Email fora de formato.")));
       return;
     }
 
     if (password.length < 6) {
-      errorDialog("Senha deve ser maior do que 6 digitos.");
+      ScaffoldMessenger.of(context)
+          .showSnackBar(const SnackBar(content: Text("Senha deve ter ao menos 6 digitos.")));
       return;
     }
     try {

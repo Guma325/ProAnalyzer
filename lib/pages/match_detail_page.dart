@@ -19,31 +19,11 @@ Color checkVictoryappBar(result) {
   }
 }
 
-Color checkVictoryBackGround(result) {
-  if (result == "Win") {
-    return Colors.green.shade100;
-  } else {
-    return Colors.red.shade100;
-  }
-}
-
 class _MatchDetailPageState extends State<MatchDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: checkVictoryBackGround(widget.match.matchResult),
       appBar: AppBar(
-        title: Align(
-          alignment: Alignment.centerRight,
-          child: Text(
-            "${widget.match.kills.toString()}/${widget.match.deaths.toString()}/${widget.match.assists.toString()}",
-            textScaleFactor: 1.25,
-            style: TextStyle(
-                color: Colors.grey.shade300,
-                fontSize: 15,
-                fontWeight: FontWeight.bold),
-          ),
-        ),
         backgroundColor: checkVictoryappBar(widget.match.matchResult),
       ),
       body: Center(
@@ -55,6 +35,17 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Image.asset(widget.match.championPlayed)),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Text(
+              "${widget.match.kills.toString()} / ${widget.match.deaths.toString()} / ${widget.match.assists.toString()}",
+              textScaleFactor: 1.25,
+              style: TextStyle(
+                  color: Colors.grey[800],
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(
               height: 20,

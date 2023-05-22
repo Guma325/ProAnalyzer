@@ -1,39 +1,39 @@
-import 'package:flutter/material.dart';
-import 'package:myapp/models/summoner.dart';
+import "package:flutter/material.dart";
+import "package:myapp/models/summoner.dart";
 import 'package:myapp/components/my_matchlisttile.dart';
 import 'package:myapp/repositories/match_repository.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+class PlayerDetailPage extends StatefulWidget {
+  Summoner summoner;
+
+  PlayerDetailPage({super.key, required this.summoner});
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<PlayerDetailPage> createState() => _PlayerDetailPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _PlayerDetailPageState extends State<PlayerDetailPage> {
   @override
   Widget build(BuildContext context) {
     final tabela = MatchRepository.tabela;
-    final user = Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "Kami",
-        firstChampion: "images/champions/Caitlyn_0.jpg",
-        secondChampion: "images/champions/Mordekaiser_0.jpg",
-        thirdChampion: "images/champions/Nasus_0.jpg",
-        winrate: 55);
+
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.grey.shade300,
+        title: Text(widget.summoner.nomeInvocador),
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 70),
+            const SizedBox(height: 20),
             CircleAvatar(
               maxRadius: 50,
-              backgroundImage: AssetImage(user.iconeInvocador),
+              backgroundImage: AssetImage(widget.summoner.iconeInvocador),
             ),
             const SizedBox(height: 20),
             Text(
-              user.nomeInvocador,
+              widget.summoner.nomeInvocador,
               style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 28,
@@ -47,21 +47,24 @@ class _ProfilePageState extends State<ProfilePage> {
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 30,
-                      backgroundImage: AssetImage(user.firstChampion),
+                      backgroundImage:
+                          AssetImage(widget.summoner.firstChampion),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 30,
-                      backgroundImage: AssetImage(user.secondChampion),
+                      backgroundImage:
+                          AssetImage(widget.summoner.secondChampion),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 30,
-                      backgroundImage: AssetImage(user.thirdChampion),
+                      backgroundImage:
+                          AssetImage(widget.summoner.thirdChampion),
                     ),
                   ),
                 ],
@@ -69,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             const SizedBox(height: 20),
             Text(
-              "WR:${user.winrate.toString()}%",
+              "WR:${widget.summoner.winrate.toString()}%",
               style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 21,

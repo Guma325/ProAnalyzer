@@ -11,11 +11,19 @@ class MatchDetailPage extends StatefulWidget {
   State<MatchDetailPage> createState() => _MatchDetailPageState();
 }
 
-Color checkVictory(result) {
+Color checkVictoryappBar(result) {
   if (result == "Win") {
-    return Colors.green.shade600;
+    return Colors.green.shade400;
   } else {
-    return Colors.red.shade600;
+    return Colors.red.shade400;
+  }
+}
+
+Color checkVictoryBackGround(result) {
+  if (result == "Win") {
+    return Colors.green.shade100;
+  } else {
+    return Colors.red.shade100;
   }
 }
 
@@ -23,6 +31,7 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: checkVictoryBackGround(widget.match.matchResult),
       appBar: AppBar(
         title: Align(
           alignment: Alignment.centerRight,
@@ -35,17 +44,97 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
                 fontWeight: FontWeight.bold),
           ),
         ),
-        backgroundColor: checkVictory(widget.match.matchResult),
+        backgroundColor: checkVictoryappBar(widget.match.matchResult),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              height: 100,
+              height: 140,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Image.asset(widget.match.championPlayed)),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Wrap(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 50,
+                      backgroundImage: AssetImage(widget.match.summonerSpell1),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 50,
+                      backgroundImage: AssetImage(widget.match.summonerSpell2),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Center(
+              child: Wrap(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 40,
+                      backgroundImage: AssetImage(widget.match.item1),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 40,
+                      backgroundImage: AssetImage(widget.match.item2),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 40,
+                      backgroundImage: AssetImage(widget.match.item3),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Center(
+              child: Wrap(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 40,
+                      backgroundImage: AssetImage(widget.match.item4),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 40,
+                      backgroundImage: AssetImage(widget.match.item5),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 40,
+                      backgroundImage: AssetImage(widget.match.item6),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

@@ -41,7 +41,7 @@ class _MyMatchListTile extends State<MyMatchListTile> {
   Widget build(BuildContext context) {
     final tabela = MatchRepository.tabela;
     return ListTile(
-      hoverColor: Colors.grey[500],
+      hoverColor: Colors.grey[300],
       leading: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
           child: Image.asset(tabela[widget.match].championPlayed)),

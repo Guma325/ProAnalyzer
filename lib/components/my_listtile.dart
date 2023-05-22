@@ -28,7 +28,7 @@ class _MyListTileState extends State<MyListTile> {
   Widget build(BuildContext context) {
     final tabela = SummonerRepository.tabela;
     return ListTile(
-      hoverColor: Colors.grey[500],
+      hoverColor: Colors.grey[300],
       leading: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
           child: Image.asset(tabela[widget.summoner].iconeInvocador)),

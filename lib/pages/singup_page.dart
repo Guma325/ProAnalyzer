@@ -46,6 +46,7 @@ class _SingUpPageState extends State<SingUpPage> {
     password.compareTo(passwordConf);
 
     if (password.length < 6) {
+
       errorDialog("Senha deve ser maior do que 6 digitos");
       return;
     }
@@ -72,7 +73,16 @@ class _SingUpPageState extends State<SingUpPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(text),
+          title: Center(
+            child: Text(
+              textAlign: TextAlign.center,
+              text,
+              style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
         );
       },
     );

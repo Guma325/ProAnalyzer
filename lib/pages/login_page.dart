@@ -35,7 +35,16 @@ class _LoginPageState extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text(text),
+          title: Center(
+            child: Text(
+              textAlign: TextAlign.center,
+              text,
+              style: TextStyle(
+                  color: Colors.grey[600],
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
         );
       },
     );

@@ -61,12 +61,13 @@ class _MyStatefulWidgetState extends State<HomePage>
         children: <Widget>[
           Scaffold(
               body: ListView.separated(
-                  itemBuilder: (BuildContext context, int summoner) {
-                    return MyListTile(summoner: summoner);
-                  },
-                  padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
+            itemBuilder: (BuildContext context, int summoner) {
+              return MyListTile(summoner: summoner);
+            },
+            padding: const EdgeInsets.all(25),
+            separatorBuilder: (_, __) => const Divider(),
+            itemCount: tabela.length,
+          )),
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int summoner) {

@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/summoner.dart';
 import 'package:myapp/pages/player_detail_page.dart';
-import 'package:myapp/pages/profile_page.dart';
 
 import '../repositories/summoner_repository.dart';
 
 class MyListTile extends StatefulWidget {
   final int summoner;
 
-  const MyListTile({super.key, required this.summoner});
+  MyListTile({super.key, required this.summoner});
 
   @override
   State<MyListTile> createState() => _MyListTileState();
 }
 
 class _MyListTileState extends State<MyListTile> {
+  List<Summoner> selecionados = [];
   showPlayerDetails(Summoner summoner) {
     Navigator.push(
         context,
@@ -29,9 +29,14 @@ class _MyListTileState extends State<MyListTile> {
     final tabela = SummonerRepository.tabela;
     return ListTile(
       hoverColor: Colors.grey[300],
-      leading: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: Image.asset(tabela[widget.summoner].iconeInvocador)),
+      leading: selecionados.contains(tabela[widget.summoner])
+          ? const CircleAvatar(
+              child: Icon(
+              Icons.check,
+            ))
+          : ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.asset(tabela[widget.summoner].iconeInvocador)),
       title: Text(
         tabela[widget.summoner].nomeInvocador,
         textScaleFactor: 1.25,
@@ -69,7 +74,16 @@ class _MyListTileState extends State<MyListTile> {
         style: TextStyle(
             color: Colors.grey[600], fontSize: 10, fontWeight: FontWeight.bold),
       ),
+      selected: selecionados.contains(tabela[widget.summoner]),
+      selectedColor: Colors.grey,
       onTap: () => showPlayerDetails(tabela[widget.summoner]),
+      onLongPress: () {
+        setState(() {
+          (selecionados.contains(tabela[widget.summoner]))
+              ? selecionados.remove(tabela[widget.summoner])
+              : selecionados.add(tabela[widget.summoner]);
+        });
+      },
     );
   }
 }

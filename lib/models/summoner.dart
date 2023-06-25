@@ -9,17 +9,24 @@ class Summoner extends ChangeNotifier {
   late String puuid;
   late int summonerLevel;
   late String summonerIcon;
-  String summonerName;
+  late String summonerName;
   late String firstChampion;
   late String secondChampion;
   late String thirdChampion;
 
-  Summoner({required this.summonerName}) {
-    _setupSummonerInfo();
-    // _setupMasteryInfo();
+  Summoner._create(String sumName) {
+    summonerName = sumName;
+    
   }
 
-  _setupSummonerInfo() async {
+  static Future<Summoner> create(String sumName) async {
+    var sum = Summoner._create(sumName);
+    await sum._setupSummonerInfo();
+    return sum;
+  }
+ 
+
+ _setupSummonerInfo() async {
     final summonerInfo = await RiotApi().invokeService("GET_PUUID_BYNAME", summonerName);
     if (summonerInfo.runtimeType != int) {
       puuid = summonerInfo["puuid"];

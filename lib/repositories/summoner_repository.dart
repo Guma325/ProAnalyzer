@@ -14,12 +14,11 @@ class SummonerRepository extends ChangeNotifier {
     notifyListeners();
   }
 
-  _setupSummonersTable() {
-
-    _tabela.add(Summoner(summonerName: 'MDK GhostSoul'));
-    _tabela.add(Summoner(summonerName: 'MDK Guma'));
-    _tabela.add(Summoner(summonerName: 'Skyë'));
-    _tabela.add(Summoner(summonerName: 'Avô do Churros'));
+  _setupSummonersTable() async{
+    _tabela.add(await Summoner.create("MDK GhostSoul"));
+    _tabela.add(await Summoner.create("MDK Guma"));
+    _tabela.add(await Summoner.create("Skyë"));
+    _tabela.add(await Summoner.create("Avô do Churros"));
     
   }
   showLoading(bool value){

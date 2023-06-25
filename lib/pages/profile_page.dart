@@ -14,65 +14,65 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final tabela = MatchRepository.tabela;
-    Summoner user = Summoner(summonerName: 'MDK GhostSoul');
+    // Summoner user = awaitSummoner.create("MDK GhostSoul");
 
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const SizedBox(height: 70),
-            CircleAvatar(
-              maxRadius: 50,
-              backgroundImage: NetworkImage(""),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              "",
-              style: TextStyle(color: Colors.grey[600], fontSize: 28, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 20),
-            Center(
-              child: Wrap(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: CircleAvatar(
-                      maxRadius: 30,
-                      backgroundImage: NetworkImage(""),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: CircleAvatar(
-                      maxRadius: 30,
-                      backgroundImage: NetworkImage(""),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: CircleAvatar(
-                      maxRadius: 30,
-                      backgroundImage: NetworkImage(""),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView.separated(
-                  padding: EdgeInsets.zero,
-                  itemBuilder: (BuildContext context, int match) {
-                    return MyMatchListTile(match: match);
-                  },
-                  //padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length),
-            ),
-          ],
-        ),
-      ),
+      // body: Center(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.center,
+      //     children: [
+      //       const SizedBox(height: 70),
+      //       CircleAvatar(
+      //         maxRadius: 50,
+      //         backgroundImage: NetworkImage(""),
+      //       ),
+      //       const SizedBox(height: 20),
+      //       Text(
+      //         "",
+      //         style: TextStyle(color: Colors.grey[600], fontSize: 28, fontWeight: FontWeight.bold),
+      //       ),
+      //       const SizedBox(height: 20),
+      //       Center(
+      //         child: Wrap(
+      //           children: <Widget>[
+      //             Padding(
+      //               padding: const EdgeInsets.only(right: 5),
+      //               child: CircleAvatar(
+      //                 maxRadius: 30,
+      //                 backgroundImage: NetworkImage(""),
+      //               ),
+      //             ),
+      //             Padding(
+      //               padding: const EdgeInsets.only(right: 5),
+      //               child: CircleAvatar(
+      //                 maxRadius: 30,
+      //                 backgroundImage: NetworkImage(""),
+      //               ),
+      //             ),
+      //             Padding(
+      //               padding: const EdgeInsets.only(right: 5),
+      //               child: CircleAvatar(
+      //                 maxRadius: 30,
+      //                 backgroundImage: NetworkImage(""),
+      //               ),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //       const SizedBox(height: 20),
+      //       Expanded(
+      //         child: ListView.separated(
+      //             padding: EdgeInsets.zero,
+      //             itemBuilder: (BuildContext context, int match) {
+      //               return MyMatchListTile(match: match);
+      //             },
+      //             //padding: const EdgeInsets.all(25),
+      //             separatorBuilder: (_, __) => const Divider(),
+      //             itemCount: tabela.length),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

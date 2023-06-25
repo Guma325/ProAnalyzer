@@ -10,69 +10,75 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
+
+
 class _ProfilePageState extends State<ProfilePage> {
+  late Summoner user;
+  Future<Summoner> createProfilePage() async{
+   return await Summoner.create("MDK GhostSoul");
+  }
+  
   @override
   Widget build(BuildContext context) {
     final tabela = MatchRepository.tabela;
-    // Summoner user = awaitSummoner.create("MDK GhostSoul");
 
     return Scaffold(
-      // body: Center(
-      //   child: Column(
-      //     mainAxisAlignment: MainAxisAlignment.center,
-      //     children: [
-      //       const SizedBox(height: 70),
-      //       CircleAvatar(
-      //         maxRadius: 50,
-      //         backgroundImage: NetworkImage(""),
-      //       ),
-      //       const SizedBox(height: 20),
-      //       Text(
-      //         "",
-      //         style: TextStyle(color: Colors.grey[600], fontSize: 28, fontWeight: FontWeight.bold),
-      //       ),
-      //       const SizedBox(height: 20),
-      //       Center(
-      //         child: Wrap(
-      //           children: <Widget>[
-      //             Padding(
-      //               padding: const EdgeInsets.only(right: 5),
-      //               child: CircleAvatar(
-      //                 maxRadius: 30,
-      //                 backgroundImage: NetworkImage(""),
-      //               ),
-      //             ),
-      //             Padding(
-      //               padding: const EdgeInsets.only(right: 5),
-      //               child: CircleAvatar(
-      //                 maxRadius: 30,
-      //                 backgroundImage: NetworkImage(""),
-      //               ),
-      //             ),
-      //             Padding(
-      //               padding: const EdgeInsets.only(right: 5),
-      //               child: CircleAvatar(
-      //                 maxRadius: 30,
-      //                 backgroundImage: NetworkImage(""),
-      //               ),
-      //             ),
-      //           ],
-      //         ),
-      //       ),
-      //       const SizedBox(height: 20),
-      //       Expanded(
-      //         child: ListView.separated(
-      //             padding: EdgeInsets.zero,
-      //             itemBuilder: (BuildContext context, int match) {
-      //               return MyMatchListTile(match: match);
-      //             },
-      //             //padding: const EdgeInsets.all(25),
-      //             separatorBuilder: (_, __) => const Divider(),
-      //             itemCount: tabela.length),
-      //       ),
-      //     ],
-      //   ),
-      // ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 70),
+            const CircleAvatar(
+              maxRadius: 50,
+              backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/profileicon/66.png"),
+            ),
+            const SizedBox(height: 20),
+            Text(
+              "KillerGray",
+              style: TextStyle(color: Colors.grey[600], fontSize: 28, fontWeight: FontWeight.bold),
+            ),
+            const SizedBox(height: 20),
+            const Center(
+              child: Wrap(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 30,
+                      backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/Aatrox.png"),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 30,
+                      backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/Gnar.png"),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(right: 5),
+                    child: CircleAvatar(
+                      maxRadius: 30,
+                      backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/Nilah.png"),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: ListView.separated(
+                  padding: EdgeInsets.zero,
+                  itemBuilder: (BuildContext context, int match) {
+                    return MyMatchListTile(match: match);
+                  },
+                  //padding: const EdgeInsets.all(25),
+                  separatorBuilder: (_, __) => const Divider(),
+                  itemCount: tabela.length),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

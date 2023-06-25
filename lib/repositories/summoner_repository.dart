@@ -19,6 +19,7 @@ class SummonerRepository extends ChangeNotifier {
     _tabela.add(await Summoner.create("MDK Guma"));
     _tabela.add(await Summoner.create("Skyë"));
     _tabela.add(await Summoner.create("Avô do Churros"));
+    _tabela.add(await Summoner.create("enxadao2000"));
     
   }
   showLoading(bool value){

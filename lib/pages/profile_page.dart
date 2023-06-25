@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/api/network_image.dart';
 import 'package:myapp/models/summoner.dart';
 import 'package:myapp/components/my_matchlisttile.dart';
 import 'package:myapp/repositories/match_repository.dart';

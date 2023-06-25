@@ -16,7 +16,6 @@ class RiotApi {
         serviceEndPoint = "${url}lol/champion-mastery/v4/champion-masteries/by-puuid/$requestInfo?api_key=$apikey";
         break;
     }
-    print(serviceEndPoint);
     final response = await http.get(Uri.parse(serviceEndPoint));
     if (response.statusCode == 200) {
       return json.decode(response.body);

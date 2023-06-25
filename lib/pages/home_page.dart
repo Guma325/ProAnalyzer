@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/components/my_listtile_copy.dart';
-import 'package:myapp/models/summoner.dart';
+import 'package:myapp/components/my_listtile.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
 import 'package:provider/provider.dart';
 
@@ -13,8 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
-  late List<Summoner> tabela;
-  late SummonerRepository summoners;
 
   @override
   void initState() {
@@ -24,8 +21,6 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
 
   @override
   Widget build(BuildContext context) {
-    summoners = context.watch<SummonerRepository>();
-    tabela = summoners.tabela;
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -59,7 +54,9 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
           ],
         ),
       ),
-      body: TabBarView(
+      body: Consumer<SummonerRepository>(builder: (context, repositorio, child) {
+        return !repositorio.loading.value 
+        ? TabBarView(
         controller: _tabController,
         children: <Widget>[
           Scaffold(
@@ -69,7 +66,7 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
+                  itemCount: repositorio.tabela.length)),
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int summoner) {
@@ -77,7 +74,7 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
+                  itemCount: repositorio.tabela.length)),
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int summoner) {
@@ -85,7 +82,7 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
+                  itemCount: repositorio.tabela.length)),
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int summoner) {
@@ -93,7 +90,7 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
+                  itemCount: repositorio.tabela.length)),
           Scaffold(
               body: ListView.separated(
                   itemBuilder: (BuildContext context, int summoner) {
@@ -101,9 +98,11 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
                   },
                   padding: const EdgeInsets.all(25),
                   separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
+                  itemCount: repositorio.tabela.length)),
         ],
-      ),
+      )
+      : const CircularProgressIndicator();
+      })
     );
   }
 }

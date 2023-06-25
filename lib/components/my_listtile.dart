@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/summoner.dart';
 import 'package:myapp/pages/player_detail_page.dart';
-
-import '../api/network_image.dart';
+import 'package:provider/provider.dart';
 import '../repositories/summoner_repository.dart';
 
 class MyListTile extends StatefulWidget {
@@ -30,6 +29,8 @@ class _MyListTileState extends State<MyListTile> {
 
   @override
   Widget build(BuildContext context) {
+    summoners = context.watch<SummonerRepository>();
+    tabela = summoners.tabela;
     return ListTile(
       hoverColor: Colors.grey[300],
       leading: selecionados.contains(tabela[widget.summoner])
@@ -39,7 +40,7 @@ class _MyListTileState extends State<MyListTile> {
             ))
           : ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
-              child: Image.network(NetworkImageUrl().retrieveSummonerIconUrl(tabela[widget.summoner].summonerIcon)),
+              child: Image.network(tabela[widget.summoner].summonerIcon),
             ),
       title: Text(
         tabela[widget.summoner].summonerName,
@@ -52,21 +53,21 @@ class _MyListTileState extends State<MyListTile> {
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage:
-                  NetworkImage(NetworkImageUrl().retrieveChampionUrl(tabela[widget.summoner].firstChampion) as String),
+                  NetworkImage(tabela[widget.summoner].firstChampion),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage:
-                  NetworkImage(NetworkImageUrl().retrieveChampionUrl(tabela[widget.summoner].secondChampion) as String),
+                  NetworkImage(tabela[widget.summoner].secondChampion),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage:
-                  NetworkImage(NetworkImageUrl().retrieveChampionUrl(tabela[widget.summoner].thirdChampion) as String),
+                  NetworkImage(tabela[widget.summoner].thirdChampion),
             ),
           ),
         ],

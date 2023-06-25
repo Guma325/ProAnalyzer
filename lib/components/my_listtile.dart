@@ -3,17 +3,17 @@ import 'package:myapp/models/summoner.dart';
 import 'package:myapp/pages/player_detail_page.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
 import 'package:provider/provider.dart';
+
 class MyListTile extends StatefulWidget {
   final int summoner;
 
-  const MyListTile({super.key, required this.summoner});
+  MyListTile({super.key, required this.summoner});
 
   @override
   State<MyListTile> createState() => _MyListTileState();
 }
 
 class _MyListTileState extends State<MyListTile> {
-
   List<Summoner> selecionados = [];
   showPlayerDetails(Summoner summoner) {
     Navigator.push(

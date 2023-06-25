@@ -15,7 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final tabela = MatchRepository.tabela;
-    Summoner user = Summoner(summonerName: 'GhostSoul');
+    Summoner user = Summoner(summonerName: 'MDK GhostSoul');
 
     return Scaffold(
       body: Center(

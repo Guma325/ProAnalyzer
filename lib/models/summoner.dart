@@ -14,7 +14,7 @@ class Summoner extends ChangeNotifier {
   Summoner({required this.summonerName}) {
     _setupSummonerInfo();
     _setupMasteryInfo();
-    print("$puuid - $summonerIcon - $summonerName - $firstChampion - $secondChampion - $thirdChampion - ");
+    notifyListeners();
   }
 
   _setupSummonerInfo() async {

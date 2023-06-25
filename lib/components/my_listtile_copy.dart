@@ -14,6 +14,7 @@ class MyListTile extends StatefulWidget {
 }
 
 class _MyListTileState extends State<MyListTile> {
+  late List<Summoner> tabela;
   late SummonerRepository summoners;
 
   List<Summoner> selecionados = [];
@@ -28,6 +29,8 @@ class _MyListTileState extends State<MyListTile> {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("KKKKKKKKK");
+    summoners = context.watch<SummonerRepository>();
+    tabela = summoners.tabela;
+    return tabela.isNotEmpty ? Text(tabela[widget.summoner].firstChampion) : const CircularProgressIndicator();
   }
 }

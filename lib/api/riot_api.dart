@@ -3,7 +3,7 @@ import 'dart:convert';
 
 class RiotApi {
   String url = "https://br1.api.riotgames.com/";
-  String apikey = "RGAPI-9c93ba1c-c1c3-4f7c-a1a8-70d6a6aa1cf5";
+  String apikey = "RGAPI-6d9dff97-03ae-4520-a1e3-26546cd698df";
   RiotApi();
 
   Future<dynamic> invokeService(String service, String requestInfo) async {
@@ -16,6 +16,7 @@ class RiotApi {
         serviceEndPoint = "${url}lol/champion-mastery/v4/champion-masteries/by-puuid/$requestInfo?api_key=$apikey";
         break;
     }
+    print(serviceEndPoint);
     final response = await http.get(Uri.parse(serviceEndPoint));
     if (response.statusCode == 200) {
       return json.decode(response.body);

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/pages/login_page.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
 import 'package:myapp/services/auth_service.dart';
+import 'package:myapp/services/notification_services.dart';
 import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
@@ -20,6 +21,7 @@ void main() async {
     providers: [
       ChangeNotifierProvider(create: (context) => AuthService()),
       ChangeNotifierProvider(create: (context) => SummonerRepository()),
+      Provider(create: (context) => NotificationServices())
     ],
     child: const MeuApp(),
   ));

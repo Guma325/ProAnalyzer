@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/models/summoner.dart';
 import 'package:myapp/pages/player_detail_page.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
+import 'package:myapp/services/notification_services.dart';
 import 'package:provider/provider.dart';
 class MyListTile extends StatefulWidget {
   final int summoner;
@@ -22,6 +23,12 @@ class _MyListTileState extends State<MyListTile> {
             builder: (_) => PlayerDetailPage(
                   summoner: summoner,
                 )));
+  }
+
+  showNotification(){
+    Provider.of<NotificationServices>(context, listen: false).showNotification(
+      CustomNotification(id: 1, title: 'Teste', body: 'ATUMALACA', payload: '/home')
+    );
   }
 
   @override
@@ -72,12 +79,15 @@ class _MyListTileState extends State<MyListTile> {
       selected: selecionados.contains(repositorio.tabela[widget.summoner]),
       selectedColor: Colors.grey,
       onTap: () => showPlayerDetails(repositorio.tabela[widget.summoner]),
-      onLongPress: () {
+      onLongPress: () => {
         setState(() {
-          (selecionados.contains(repositorio.tabela[widget.summoner]))
-              ? selecionados.remove(repositorio.tabela[widget.summoner])
-              : selecionados.add(repositorio.tabela[widget.summoner]);
-        });
+          if(selecionados.contains(repositorio.tabela[widget.summoner])){
+              selecionados.remove(repositorio.tabela[widget.summoner]);
+          }else{
+              selecionados.add(repositorio.tabela[widget.summoner]);
+              showNotification();
+          }
+        })
       },
     );
     },);

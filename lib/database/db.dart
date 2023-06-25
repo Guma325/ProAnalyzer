@@ -40,3 +40,4 @@ String get _favoritos => '''
     nomeInvocador TEXT
   );
 ''';
+

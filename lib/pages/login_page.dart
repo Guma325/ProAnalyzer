@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
 
     if (password.length < 6) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text("Senha deve ter ao menos 6 digitos.")));
+          .showSnackBar(const SnackBar(content: Text("Senha deve ser maior do que 6 digitos.")));
       return;
     }
     try {

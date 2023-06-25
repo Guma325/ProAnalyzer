@@ -38,9 +38,9 @@ class _ProfilePageState extends State<ProfilePage> {
               style: TextStyle(color: Colors.grey[600], fontSize: 28, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            const Center(
+            Center(
               child: Wrap(
-                children: <Widget>[
+                children: const <Widget>[
                   Padding(
                     padding: EdgeInsets.only(right: 5),
                     child: CircleAvatar(

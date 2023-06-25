@@ -6,15 +6,12 @@ class SummonerRepository extends ChangeNotifier {
   final loading = ValueNotifier(true);
   List<Summoner> get tabela => _tabela;
 
-  
   SummonerRepository() {
-    showLoading(true);
     _setupSummonersTable();
-    showLoading(false);
-    notifyListeners();
   }
 
-  _setupSummonersTable() async{
+  _setupSummonersTable() async {
+    showLoading(true);
     _tabela.add(await Summoner.create("MDK GhostSoul"));
     _tabela.add(await Summoner.create("MDK Guma"));
     _tabela.add(await Summoner.create("Skyë"));
@@ -23,9 +20,10 @@ class SummonerRepository extends ChangeNotifier {
     _tabela.add(await Summoner.create("twitch nicklink"));
     _tabela.add(await Summoner.create("tsctsctsctsc"));
     _tabela.add(await Summoner.create("Titan"));
-    
+    showLoading(false);
   }
-  showLoading(bool value){
+
+  showLoading(bool value) {
     loading.value = value;
     notifyListeners();
   }

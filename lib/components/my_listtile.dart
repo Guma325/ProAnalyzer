@@ -26,16 +26,14 @@ class _MyListTileState extends State<MyListTile> {
 
   @override
   Widget build(BuildContext context) {
-    
     return Consumer<SummonerRepository>(builder: (context, repositorio, child){
       return ListTile(
       hoverColor: Colors.grey[300],
-      leading: selecionados.contains(repositorio.tabela[widget.summoner])
-          ? const CircleAvatar(
-              child: Icon(
-              Icons.check,
-            ))
-          : ClipRRect(
+      tileColor:  selecionados.contains(repositorio.tabela[widget.summoner])
+      ? Colors.grey[800]
+      : null
+      ,
+      leading: ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: Image.network(repositorio.tabela[widget.summoner].summonerIcon),
             ),

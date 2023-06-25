@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/match.dart';
-import '../repositories/match_repository.dart';
 
+// ignore: must_be_immutable
 class MatchDetailPage extends StatefulWidget {
   Match match;
 

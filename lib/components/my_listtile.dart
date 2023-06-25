@@ -2,18 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:myapp/models/summoner.dart';
 import 'package:myapp/pages/player_detail_page.dart';
 
+import '../api/network_image.dart';
 import '../repositories/summoner_repository.dart';
 
 class MyListTile extends StatefulWidget {
   final int summoner;
 
-  MyListTile({super.key, required this.summoner});
+  const MyListTile({super.key, required this.summoner});
 
   @override
   State<MyListTile> createState() => _MyListTileState();
 }
 
 class _MyListTileState extends State<MyListTile> {
+  late List<Summoner> tabela;
+  late SummonerRepository summoners;
+
   List<Summoner> selecionados = [];
   showPlayerDetails(Summoner summoner) {
     Navigator.push(
@@ -26,7 +30,6 @@ class _MyListTileState extends State<MyListTile> {
 
   @override
   Widget build(BuildContext context) {
-    final tabela = SummonerRepository.tabela;
     return ListTile(
       hoverColor: Colors.grey[300],
       leading: selecionados.contains(tabela[widget.summoner])
@@ -36,12 +39,12 @@ class _MyListTileState extends State<MyListTile> {
             ))
           : ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
-              child: Image.asset(tabela[widget.summoner].iconeInvocador)),
+              child: Image.network(NetworkImageUrl().retrieveSummonerIconUrl(tabela[widget.summoner].summonerIcon)),
+            ),
       title: Text(
-        tabela[widget.summoner].nomeInvocador,
+        tabela[widget.summoner].summonerName,
         textScaleFactor: 1.25,
-        style: TextStyle(
-            color: Colors.grey[800], fontSize: 15, fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.grey[800], fontSize: 15, fontWeight: FontWeight.bold),
       ),
       subtitle: Row(
         children: <Widget>[
@@ -49,30 +52,24 @@ class _MyListTileState extends State<MyListTile> {
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage:
-                  AssetImage(tabela[widget.summoner].firstChampion),
+                  NetworkImage(NetworkImageUrl().retrieveChampionUrl(tabela[widget.summoner].firstChampion) as String),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage:
-                  AssetImage(tabela[widget.summoner].secondChampion),
+                  NetworkImage(NetworkImageUrl().retrieveChampionUrl(tabela[widget.summoner].secondChampion) as String),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
             child: CircleAvatar(
               backgroundImage:
-                  AssetImage(tabela[widget.summoner].thirdChampion),
+                  NetworkImage(NetworkImageUrl().retrieveChampionUrl(tabela[widget.summoner].thirdChampion) as String),
             ),
           ),
         ],
-      ),
-      trailing: Text(
-        "WR:${tabela[widget.summoner].winrate.toString()}%",
-        textScaleFactor: 1.25,
-        style: TextStyle(
-            color: Colors.grey[600], fontSize: 10, fontWeight: FontWeight.bold),
       ),
       selected: selecionados.contains(tabela[widget.summoner]),
       selectedColor: Colors.grey,

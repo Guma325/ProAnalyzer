@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/components/my_listtile.dart';
+import 'package:myapp/components/my_listtile_copy.dart';
+import 'package:myapp/models/summoner.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,9 +11,10 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _MyStatefulWidgetState();
 }
 
-class _MyStatefulWidgetState extends State<HomePage>
-    with TickerProviderStateMixin {
+class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMixin {
   late TabController _tabController;
+  late List<Summoner> tabela;
+  late SummonerRepository summoners;
 
   @override
   void initState() {
@@ -21,8 +24,6 @@ class _MyStatefulWidgetState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) {
-    final tabela = SummonerRepository.tabela;
-
     return Scaffold(
       backgroundColor: Colors.transparent,
       appBar: AppBar(
@@ -56,51 +57,55 @@ class _MyStatefulWidgetState extends State<HomePage>
           ],
         ),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: <Widget>[
-          Scaffold(
-              body: ListView.separated(
-                  itemBuilder: (BuildContext context, int summoner) {
-                    return MyListTile(summoner: summoner);
-                  },
-                  padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
-          Scaffold(
-              body: ListView.separated(
-                  itemBuilder: (BuildContext context, int summoner) {
-                    return MyListTile(summoner: summoner);
-                  },
-                  padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
-          Scaffold(
-              body: ListView.separated(
-                  itemBuilder: (BuildContext context, int summoner) {
-                    return MyListTile(summoner: summoner);
-                  },
-                  padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
-          Scaffold(
-              body: ListView.separated(
-                  itemBuilder: (BuildContext context, int summoner) {
-                    return MyListTile(summoner: summoner);
-                  },
-                  padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
-          Scaffold(
-              body: ListView.separated(
-                  itemBuilder: (BuildContext context, int summoner) {
-                    return MyListTile(summoner: summoner);
-                  },
-                  padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length)),
-        ],
-      ),
+      body: Consumer<SummonerRepository>(builder: (context, repositorio, child) {
+        return repositorio.tabela.isEmpty
+            ? const CircularProgressIndicator()
+            : TabBarView(
+                controller: _tabController,
+                children: <Widget>[
+                  Scaffold(
+                      body: ListView.separated(
+                          itemBuilder: (BuildContext context, int summoner) {
+                            return MyListTile(summoner: summoner);
+                          },
+                          padding: const EdgeInsets.all(25),
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemCount: repositorio.tabela.length)),
+                  Scaffold(
+                      body: ListView.separated(
+                          itemBuilder: (BuildContext context, int summoner) {
+                            return MyListTile(summoner: summoner);
+                          },
+                          padding: const EdgeInsets.all(25),
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemCount: repositorio.tabela.length)),
+                  Scaffold(
+                      body: ListView.separated(
+                          itemBuilder: (BuildContext context, int summoner) {
+                            return MyListTile(summoner: summoner);
+                          },
+                          padding: const EdgeInsets.all(25),
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemCount: repositorio.tabela.length)),
+                  Scaffold(
+                      body: ListView.separated(
+                          itemBuilder: (BuildContext context, int summoner) {
+                            return MyListTile(summoner: summoner);
+                          },
+                          padding: const EdgeInsets.all(25),
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemCount: repositorio.tabela.length)),
+                  Scaffold(
+                      body: ListView.separated(
+                          itemBuilder: (BuildContext context, int summoner) {
+                            return MyListTile(summoner: summoner);
+                          },
+                          padding: const EdgeInsets.all(25),
+                          separatorBuilder: (_, __) => const Divider(),
+                          itemCount: repositorio.tabela.length)),
+                ],
+              );
+      }),
     );
   }
 }

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/my_button.dart';
 import 'package:myapp/components/my_textfield.dart';
-import 'package:myapp/pages/navbar_page.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:myapp/services/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -46,7 +45,6 @@ class _SingUpPageState extends State<SingUpPage> {
     password.compareTo(passwordConf);
 
     if (password.length < 6) {
-
       errorDialog("Senha deve ser maior do que 6 digitos");
       return;
     }

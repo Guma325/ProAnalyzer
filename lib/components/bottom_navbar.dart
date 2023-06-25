@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../services/auth_service.dart';
 
+// ignore: must_be_immutable
 class MyBottomNavbar extends StatelessWidget {
   void Function(int)? onTabChange;
   MyBottomNavbar({super.key, required this.onTabChange});

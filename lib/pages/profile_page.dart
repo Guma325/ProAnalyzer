@@ -10,70 +10,60 @@ class ProfilePage extends StatefulWidget {
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
+
+
 class _ProfilePageState extends State<ProfilePage> {
+  late Summoner user;
+  Future<Summoner> createProfilePage() async{
+   return await Summoner.create("MDK GhostSoul");
+  }
+  
   @override
   Widget build(BuildContext context) {
     final tabela = MatchRepository.tabela;
-    final user = Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "Kami",
-        firstChampion: "images/champions/Caitlyn_0.jpg",
-        secondChampion: "images/champions/Mordekaiser_0.jpg",
-        thirdChampion: "images/champions/Nasus_0.jpg",
-        winrate: 55);
+
     return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const SizedBox(height: 70),
-            CircleAvatar(
+            const CircleAvatar(
               maxRadius: 50,
-              backgroundImage: AssetImage(user.iconeInvocador),
+              backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/profileicon/66.png"),
             ),
             const SizedBox(height: 20),
             Text(
-              user.nomeInvocador,
-              style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold),
+              "KillerGray",
+              style: TextStyle(color: Colors.grey[600], fontSize: 28, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
-            Center(
+            const Center(
               child: Wrap(
                 children: <Widget>[
                   Padding(
-                    padding: const EdgeInsets.only(right: 5),
+                    padding: EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 30,
-                      backgroundImage: AssetImage(user.firstChampion),
+                      backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/Aatrox.png"),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 5),
+                    padding: EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 30,
-                      backgroundImage: AssetImage(user.secondChampion),
+                      backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/Gnar.png"),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 5),
+                    padding: EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 30,
-                      backgroundImage: AssetImage(user.thirdChampion),
+                      backgroundImage: NetworkImage("http://ddragon.leagueoflegends.com/cdn/13.12.1/img/champion/Nilah.png"),
                     ),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              "WR:${user.winrate.toString()}%",
-              style: TextStyle(
-                  color: Colors.grey[600],
-                  fontSize: 21,
-                  fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             Expanded(

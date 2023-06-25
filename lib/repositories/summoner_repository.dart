@@ -1,62 +1,32 @@
+import 'package:flutter/material.dart';
 import 'package:myapp/models/summoner.dart';
 
-class SummonerRepository {
-  static List<Summoner> tabela = [
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "Kami",
-        firstChampion: "images/champions/Caitlyn_0.jpg",
-        secondChampion: "images/champions/Mordekaiser_0.jpg",
-        thirdChampion: "images/champions/Nasus_0.jpg",
-        winrate: 55),
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "SirT",
-        firstChampion: "images/champions/LeeSin_0.jpg",
-        secondChampion: "images/champions/Lillia_0.jpg",
-        thirdChampion: "images/champions/Elise_0.jpg",
-        winrate: 65),
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "BrTT",
-        firstChampion: "images/champions/Zeri_0.jpg",
-        secondChampion: "images/champions/Ezreal_0.jpg",
-        thirdChampion: "images/champions/Draven_0.jpg",
-        winrate: 75),
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "Mylon",
-        firstChampion: "images/champions/Gnar_0.jpg",
-        secondChampion: "images/champions/Singed_0.jpg",
-        thirdChampion: "images/champions/Sion_0.jpg",
-        winrate: 70),
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "Guma325",
-        firstChampion: "images/champions/Gnar_0.jpg",
-        secondChampion: "images/champions/Singed_0.jpg",
-        thirdChampion: "images/champions/Sion_0.jpg",
-        winrate: 70),
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "GhostSoul",
-        firstChampion: "images/champions/Gnar_0.jpg",
-        secondChampion: "images/champions/Singed_0.jpg",
-        thirdChampion: "images/champions/Sion_0.jpg",
-        winrate: 70),
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "Skye",
-        firstChampion: "images/champions/Gnar_0.jpg",
-        secondChampion: "images/champions/Singed_0.jpg",
-        thirdChampion: "images/champions/Sion_0.jpg",
-        winrate: 70),
-    Summoner(
-        iconeInvocador: "images/profile_icons/666.png",
-        nomeInvocador: "Mylon",
-        firstChampion: "images/champions/Gnar_0.jpg",
-        secondChampion: "images/champions/Singed_0.jpg",
-        thirdChampion: "images/champions/Sion_0.jpg",
-        winrate: 70),
-  ];
+class SummonerRepository extends ChangeNotifier {
+  final List<Summoner> _tabela = [];
+  final loading = ValueNotifier(true);
+  List<Summoner> get tabela => _tabela;
+
+  
+  SummonerRepository() {
+    showLoading(true);
+    _setupSummonersTable();
+    showLoading(false);
+    notifyListeners();
+  }
+
+  _setupSummonersTable() async{
+    _tabela.add(await Summoner.create("MDK GhostSoul"));
+    _tabela.add(await Summoner.create("MDK Guma"));
+    _tabela.add(await Summoner.create("Skyë"));
+    _tabela.add(await Summoner.create("Avô do Churros"));
+    _tabela.add(await Summoner.create("enxadao2000"));
+    _tabela.add(await Summoner.create("twitch nicklink"));
+    _tabela.add(await Summoner.create("tsctsctsctsc"));
+    _tabela.add(await Summoner.create("Titan"));
+    
+  }
+  showLoading(bool value){
+    loading.value = value;
+    notifyListeners();
+  }
 }

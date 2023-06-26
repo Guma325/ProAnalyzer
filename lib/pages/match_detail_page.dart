@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/models/match.dart';
-import '../repositories/match_repository.dart';
 
+// ignore: must_be_immutable
 class MatchDetailPage extends StatefulWidget {
   Match match;
 
@@ -11,8 +11,8 @@ class MatchDetailPage extends StatefulWidget {
   State<MatchDetailPage> createState() => _MatchDetailPageState();
 }
 
-Color checkVictoryappBar(result) {
-  if (result == "Win") {
+Color checkVictoryappBar(bool result) {
+  if (result) {
     return Colors.green.shade400;
   } else {
     return Colors.red.shade400;
@@ -34,7 +34,7 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
               height: 140,
               child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
-                  child: Image.asset(widget.match.championPlayed)),
+                  child: Image.network(widget.match.championPlayed)),
             ),
             const SizedBox(
               height: 20,
@@ -57,14 +57,14 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 50,
-                      backgroundImage: AssetImage(widget.match.summonerSpell1),
+                      backgroundImage: NetworkImage(widget.match.summonerSpell1),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 50,
-                      backgroundImage: AssetImage(widget.match.summonerSpell2),
+                      backgroundImage: NetworkImage(widget.match.summonerSpell2),
                     ),
                   ),
                 ],
@@ -80,21 +80,21 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 40,
-                      backgroundImage: AssetImage(widget.match.item1),
+                      backgroundImage: NetworkImage(widget.match.item1),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 40,
-                      backgroundImage: AssetImage(widget.match.item2),
+                      backgroundImage: NetworkImage(widget.match.item2),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 40,
-                      backgroundImage: AssetImage(widget.match.item3),
+                      backgroundImage: NetworkImage(widget.match.item3),
                     ),
                   ),
                 ],
@@ -107,21 +107,21 @@ class _MatchDetailPageState extends State<MatchDetailPage> {
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 40,
-                      backgroundImage: AssetImage(widget.match.item4),
+                      backgroundImage: NetworkImage(widget.match.item4),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 40,
-                      backgroundImage: AssetImage(widget.match.item5),
+                      backgroundImage: NetworkImage(widget.match.item5),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 5),
                     child: CircleAvatar(
                       maxRadius: 40,
-                      backgroundImage: AssetImage(widget.match.item6),
+                      backgroundImage: NetworkImage(widget.match.item6),
                     ),
                   ),
                 ],

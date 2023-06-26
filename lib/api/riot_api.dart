@@ -3,6 +3,7 @@ import 'dart:convert';
 
 class RiotApi {
   String url = "https://br1.api.riotgames.com/";
+  String urlA = "https://americas.api.riotgames.com/";
   String apikey = "RGAPI-6d9dff97-03ae-4520-a1e3-26546cd698df";
   RiotApi();
 
@@ -14,6 +15,12 @@ class RiotApi {
         break;
       case "GET_SUMMONERMASTERY_BYPUUID":
         serviceEndPoint = "${url}lol/champion-mastery/v4/champion-masteries/by-puuid/$requestInfo?api_key=$apikey";
+        break;
+      case "GET_MATCHS_BYPUUID":
+        serviceEndPoint = "${urlA}lol/match/v5/matches/by-puuid/$requestInfo/ids?start=0&count=3&api_key=$apikey";
+        break;
+      case "GET_MATCH_BYMATCHID":
+        serviceEndPoint = "${urlA}lol/match/v5/matches/$requestInfo?api_key=$apikey";
         break;
     }
     final response = await http.get(Uri.parse(serviceEndPoint));

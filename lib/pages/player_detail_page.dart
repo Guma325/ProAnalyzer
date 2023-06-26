@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:myapp/models/summoner.dart";
 import 'package:myapp/components/my_matchlisttile.dart';
-import 'package:myapp/repositories/match_repository.dart';
 
 // ignore: must_be_immutable
 class PlayerDetailPage extends StatefulWidget {
@@ -16,8 +15,6 @@ class PlayerDetailPage extends StatefulWidget {
 class _PlayerDetailPageState extends State<PlayerDetailPage> {
   @override
   Widget build(BuildContext context) {
-    final tabela = MatchRepository.tabela;
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.grey.shade300,
@@ -67,14 +64,13 @@ class _PlayerDetailPageState extends State<PlayerDetailPage> {
             ),
             const SizedBox(height: 20),
             Expanded(
-              child: ListView.separated(
-                  padding: EdgeInsets.zero,
-                  itemBuilder: (BuildContext context, int match) {
-                    return MyMatchListTile(match: match);
-                  },
-                  //padding: const EdgeInsets.all(25),
-                  separatorBuilder: (_, __) => const Divider(),
-                  itemCount: tabela.length),
+              child: ListView(
+                children: [
+                  MyMatchListTile(match: widget.summoner.firstMatch),
+                  MyMatchListTile(match: widget.summoner.secondMatch),
+                  MyMatchListTile(match: widget.summoner.thirdMatch),
+                ],
+              ),
             ),
           ],
         ),

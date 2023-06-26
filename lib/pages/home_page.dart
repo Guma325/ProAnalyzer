@@ -101,7 +101,7 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
                   itemCount: repositorio.tabela.length)),
         ],
       )
-      : const CircularProgressIndicator();
+      : const Center(child: CircularProgressIndicator());
       })
     );
   }

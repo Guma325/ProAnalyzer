@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/pages/match_detail_page.dart';
-
-import '../repositories/match_repository.dart';
 import 'package:myapp/models/match.dart';
 
 class MyMatchListTile extends StatefulWidget {
-  final int match;
+  Match match;
 
-  const MyMatchListTile({super.key, required this.match});
+  MyMatchListTile({super.key, required this.match});
 
   @override
   State<MyMatchListTile> createState() => _MyMatchListTile();
 }
 
-Text checkVictory(result) {
+Text checkVictory(bool win) {
   Color color;
-  if (result == "Win") {
+  if (win) {
     color = Colors.green.shade600;
+    return Text(
+      "Win",
+      textScaleFactor: 1.25,
+      style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold),
+    );
   } else {
     color = Colors.red.shade600;
+    return Text(
+      "Lose",
+      textScaleFactor: 1.25,
+      style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold),
+    );
   }
-  return Text(
-    result,
-    textScaleFactor: 1.25,
-    style: TextStyle(color: color, fontSize: 10, fontWeight: FontWeight.bold),
-  );
 }
 
 class _MyMatchListTile extends State<MyMatchListTile> {
@@ -39,60 +42,58 @@ class _MyMatchListTile extends State<MyMatchListTile> {
 
   @override
   Widget build(BuildContext context) {
-    final tabela = MatchRepository.tabela;
     return ListTile(
       hoverColor: Colors.grey[300],
       leading: ClipRRect(
           borderRadius: BorderRadius.circular(10.0),
-          child: Image.asset(tabela[widget.match].championPlayed)),
+          child: Image.network(widget.match.championPlayed)),
       title: Text(
-        "${tabela[widget.match].kills.toString()}/${tabela[widget.match].deaths.toString()}/${tabela[widget.match].assists.toString()}",
+        "${widget.match.kills.toString()}/${widget.match.deaths.toString()}/${widget.match.assists.toString()}",
         textScaleFactor: 1.25,
-        style: TextStyle(
-            color: Colors.grey[900], fontSize: 12, fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.grey[900], fontSize: 12, fontWeight: FontWeight.bold),
       ),
       subtitle: Row(
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 1.0, 0.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage(tabela[widget.match].item1),
+              backgroundImage: NetworkImage(widget.match.item1),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 1.0, 0.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage(tabela[widget.match].item2),
+              backgroundImage: NetworkImage(widget.match.item2),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 1.0, 0.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage(tabela[widget.match].item3),
+              backgroundImage: NetworkImage(widget.match.item3),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 1.0, 0.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage(tabela[widget.match].item4),
+              backgroundImage: NetworkImage(widget.match.item4),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 1.0, 0.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage(tabela[widget.match].item5),
+              backgroundImage: NetworkImage(widget.match.item5),
             ),
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(0.0, 5.0, 1.0, 0.0),
             child: CircleAvatar(
-              backgroundImage: AssetImage(tabela[widget.match].item6),
+              backgroundImage: NetworkImage(widget.match.item6),
             ),
           ),
         ],
       ),
-      trailing: checkVictory(tabela[widget.match].matchResult),
-      onTap: () => showMatchDetails(tabela[widget.match]),
+      trailing: checkVictory(widget.match.matchResult),
+      onTap: () => showMatchDetails(widget.match),
     );
   }
 }

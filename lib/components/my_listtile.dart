@@ -26,58 +26,59 @@ class _MyListTileState extends State<MyListTile> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<SummonerRepository>(builder: (context, repositorio, child){
-      return ListTile(
-      hoverColor: Colors.grey[300],
-      tileColor:  selecionados.contains(repositorio.tabela[widget.summoner])
-      ? Colors.grey[800]
-      : null
-      ,
-      leading: ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
-              child: Image.network(repositorio.tabela[widget.summoner].summonerIcon),
-            ),
-      title: Text(
-        repositorio.tabela[widget.summoner].summonerName,
-        textScaleFactor: 1.25,
-        style: TextStyle(color: Colors.grey[800], fontSize: 15, fontWeight: FontWeight.bold),
-      ),
-      subtitle: Row(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
-            child: CircleAvatar(
-              backgroundImage:
-                  NetworkImage(repositorio.tabela[widget.summoner].firstChampion),
-            ),
+    return Consumer<SummonerRepository>(
+      builder: (context, repositorio, child) {
+        return ListTile(
+          hoverColor: Colors.grey[300],
+          tileColor: selecionados.contains(repositorio.tabela[widget.summoner]) ? Colors.grey[800] : null,
+          leading: ClipRRect(
+            borderRadius: BorderRadius.circular(10.0),
+            child: Image.network(repositorio.tabela[widget.summoner].summonerIcon),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
-            child: CircleAvatar(
-              backgroundImage:
-                  NetworkImage(repositorio.tabela[widget.summoner].secondChampion),
-            ),
+          title: Text(
+            repositorio.tabela[widget.summoner].summonerName,
+            textScaleFactor: 1.25,
+            style: TextStyle(color: Colors.grey[800], fontSize: 15, fontWeight: FontWeight.bold),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
-            child: CircleAvatar(
-              backgroundImage:
-                  NetworkImage(repositorio.tabela[widget.summoner].thirdChampion),
-            ),
+          subtitle: Row(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(repositorio.tabela[widget.summoner].firstChampion),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(repositorio.tabela[widget.summoner].secondChampion),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0.0, 5.0, 5.0, 0.0),
+                child: CircleAvatar(
+                  backgroundImage: NetworkImage(repositorio.tabela[widget.summoner].thirdChampion),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
-      selected: selecionados.contains(repositorio.tabela[widget.summoner]),
-      selectedColor: Colors.grey,
-      onTap: () => showPlayerDetails(repositorio.tabela[widget.summoner]),
-      onLongPress: () {
-        setState(() {
-          (selecionados.contains(repositorio.tabela[widget.summoner]))
-              ? selecionados.remove(repositorio.tabela[widget.summoner])
-              : selecionados.add(repositorio.tabela[widget.summoner]);
-        });
+          trailing: Text(
+            repositorio.tabela[widget.summoner].summonerLevel.toString(),
+            textScaleFactor: 1.25,
+            style: TextStyle(color: Colors.grey[400], fontSize: 15, fontWeight: FontWeight.bold),
+          ),
+          selected: selecionados.contains(repositorio.tabela[widget.summoner]),
+          selectedColor: Colors.grey,
+          onTap: () => showPlayerDetails(repositorio.tabela[widget.summoner]),
+          onLongPress: () {
+            setState(() {
+              (selecionados.contains(repositorio.tabela[widget.summoner]))
+                  ? selecionados.remove(repositorio.tabela[widget.summoner])
+                  : selecionados.add(repositorio.tabela[widget.summoner]);
+            });
+          },
+        );
       },
     );
-    },);
   }
 }

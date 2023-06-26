@@ -18,6 +18,8 @@ O aplicativo possui cinco telas interativas de navegação, sendo elas:
 - Login;
 - Sing In;
 - Home;
+- Match Details;
+- Player Details;
 - Profile;
 
 ## Melhorias
@@ -26,8 +28,10 @@ O projeto ainda está em desenvolvimento e planejamos arrumar diversas coisas. A
 - Adicionar a tela de recuperação de senha
 - Adicionar a tela de pesquisa de jogador
 - Favoritar jogadores
-- Uso da API da Riot Games
-- Uso de recursos nativos do celular
+- Integrar notificação com partidas ativas
+- Adicionar um cache local com infomações ja trazidas da api
+- Integrar perfil do jogador com login do Firebase
+- Separar jogadores por suas "lanes" principais
 
 Entre outras coisas.
 

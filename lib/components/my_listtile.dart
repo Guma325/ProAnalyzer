@@ -4,6 +4,8 @@ import 'package:myapp/pages/player_detail_page.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
 import 'package:provider/provider.dart';
 
+import '../services/notification_services.dart';
+
 class MyListTile extends StatefulWidget {
   final int summoner;
 
@@ -24,6 +26,11 @@ class _MyListTileState extends State<MyListTile> {
                 )));
   }
 
+  showNotification() {
+    Provider.of<NotificationServices>(context, listen: false)
+        .showNotification(CustomNotification(id: 1, title: 'Teste', body: 'ATUMALACA', payload: '/home'));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<SummonerRepository>(
@@ -31,10 +38,15 @@ class _MyListTileState extends State<MyListTile> {
         return ListTile(
           hoverColor: Colors.grey[300],
           tileColor: selecionados.contains(repositorio.tabela[widget.summoner]) ? Colors.grey[800] : null,
-          leading: ClipRRect(
-            borderRadius: BorderRadius.circular(10.0),
-            child: Image.network(repositorio.tabela[widget.summoner].summonerIcon),
-          ),
+          leading: selecionados.contains(repositorio.tabela[widget.summoner])
+          ? const CircleAvatar(
+              child: Icon(
+              Icons.arrow_circle_right,
+            ))
+          : ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: Image.network(repositorio.tabela[widget.summoner].summonerIcon),
+            ),
           title: Text(
             repositorio.tabela[widget.summoner].summonerName,
             textScaleFactor: 1.25,
@@ -72,9 +84,12 @@ class _MyListTileState extends State<MyListTile> {
           onTap: () => showPlayerDetails(repositorio.tabela[widget.summoner]),
           onLongPress: () {
             setState(() {
-              (selecionados.contains(repositorio.tabela[widget.summoner]))
-                  ? selecionados.remove(repositorio.tabela[widget.summoner])
-                  : selecionados.add(repositorio.tabela[widget.summoner]);
+              if (selecionados.contains(repositorio.tabela[widget.summoner])) {
+                selecionados.remove(repositorio.tabela[widget.summoner]);
+              } else {
+                selecionados.add(repositorio.tabela[widget.summoner]);
+                showNotification();
+              }
             });
           },
         );

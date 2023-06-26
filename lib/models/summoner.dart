@@ -46,7 +46,7 @@ class Summoner extends ChangeNotifier {
       thirdMatch = await Match.create(matchsInfo[2], puuid);
     }
     await Future.delayed(const Duration(milliseconds: 100));
-    print("------------------------------------- {$summonerName}");
+    print("[LOG] $summonerName has finished loading.");
   }
 
   Future<String> retrieveChampionUrl(int championid) async {

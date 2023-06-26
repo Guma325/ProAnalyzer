@@ -13,7 +13,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         body: FutureBuilder<Summoner>(
-          future: Summoner.create("Skyë"),
+          future: Summoner.create("KillerGray"),
           builder: (context, snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.waiting:

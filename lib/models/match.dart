@@ -54,7 +54,7 @@ class Match {
         }
       });
     }
-    print("---------------------------------{finished}");
+    print("[LOG] $matchId - loaded.");
   }
 
   Future<String> retrieveChampionUrl(int championid) async {
@@ -74,7 +74,7 @@ class Match {
     if (itenId != 0) {
       return "http://ddragon.leagueoflegends.com/cdn/$version/img/item/$itenId.png";
     } else {
-      return "https://hextech.tools/img/champion.0a13d083.svg";
+      return "https://static.vecteezy.com/system/resources/thumbnails/009/344/496/small/x-transparent-free-png.png";
     }
   }
 

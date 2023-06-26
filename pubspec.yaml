@@ -46,6 +46,22 @@ dependencies:
   cupertino_icons: ^1.0.2
   google_nav_bar: ^5.0.6
   http: ^0.13.6
+  flutter_launcher_icons: ^0.9.1
+  flutter_native_splash: ^1.2.0
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "images/Lolico.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "images/Lolico.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "images/Lolico.png"
 
 dev_dependencies:
   flutter_test:

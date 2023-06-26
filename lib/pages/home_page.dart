@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:myapp/components/my_listtile.dart';
 import 'package:myapp/repositories/summoner_repository.dart';
 import 'package:provider/provider.dart';
+import '../services/notification_services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,6 +18,11 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
   void initState() {
     super.initState();
     _tabController = TabController(length: 5, vsync: this);
+  }
+
+  showNotification() {
+    Provider.of<NotificationServices>(context, listen: false)
+        .showNotification(CustomNotification(id: 1, title: 'MDK Guma', body: 'is playing right now!', payload: '/home'));
   }
 
   @override
@@ -55,6 +61,9 @@ class _MyStatefulWidgetState extends State<HomePage> with TickerProviderStateMix
           ),
         ),
         body: Consumer<SummonerRepository>(builder: (context, repositorio, child) {
+          if (!repositorio.loading.value) {
+            showNotification();
+          }
           return !repositorio.loading.value
               ? TabBarView(
                   controller: _tabController,

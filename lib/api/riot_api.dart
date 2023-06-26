@@ -4,7 +4,7 @@ import 'dart:convert';
 class RiotApi {
   String url = "https://br1.api.riotgames.com/";
   String urlA = "https://americas.api.riotgames.com/";
-  String apikey = "RGAPI-6d9dff97-03ae-4520-a1e3-26546cd698df";
+  String apikey = "RGAPI-900f42aa-a3f7-4fe5-89b7-441e4c06e542";
   RiotApi();
 
   Future<dynamic> invokeService(String service, String requestInfo) async {

@@ -45,7 +45,7 @@ class Summoner extends ChangeNotifier {
       secondMatch = await Match.create(matchsInfo[1], puuid);
       thirdMatch = await Match.create(matchsInfo[2], puuid);
     }
-    await Future.delayed(const Duration(milliseconds: 100));
+    await Future.delayed(const Duration(milliseconds: 500));
     print("[LOG] $summonerName has finished loading.");
   }
 
